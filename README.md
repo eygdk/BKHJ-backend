@@ -1,6 +1,6 @@
 ## 👋 안녕하세요! 환영합니다! 저희 프로젝트 관련 설명드리도록 하겠습니다.
 
-##### 대출상품 추천 웹 애플리케이션 프로젝트 입니다.
+#### 대출상품 추천 웹 애플리케이션 프로젝트 입니다.
 
 ###### 2023.05.02 ~ 06.26 동안 Spring Boot 와 React 와 Python 를 사용해 구현했습니다.
 
@@ -43,17 +43,17 @@
 #  🕹 사용 기술 
 
 ### Back-end
-- JAVA (11)
-- MAVEN 
-- jjwt (0.9.1)
-- JPA
-- React
-- sts [3]
-- Pycharm ( Community Edition 2023.1.2 )
-- Python  (3.11.3)
-- Flask
-- ELK
-- mysql
+##### - JAVA (11)
+##### - MAVEN 
+##### - jjwt (0.9.1)
+##### - JPA
+##### - React
+##### - sts [3]
+##### - Pycharm ( Community Edition 2023.1.2 )
+##### - Python  (3.11.3)
+##### - Flask
+##### - ELK
+##### - mysql
 
 #  ✴️ 프로젝트 구조
 
@@ -73,19 +73,19 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-
 
 # 💲 구현 기능
 
-● 게시판 기능
+##### ● 게시판 기능
 - 게시글 검색 (제목, 내용, 작성자)
 - 게시글 작성,수정,삭제 
 
-● 댓글 기능
+##### ● 댓글 기능
 - 댓글 작성,수정,삭제
     
-● 회원 기능
+##### ● 회원 기능
 - JWT 기능, Security기능, 
 - 회원가입, 회원정보 수정 , 회원탈퇴
 - 로그인/로그아웃
 
-● 파일 첨부 기능
+##### ● 파일 첨부 기능
 - 파일 추가,수정,삭제
 
 
@@ -315,29 +315,59 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/29ffe622-22e0-4caa-
 
 ## ✔ Data 시각화
 
-##### ★ 해당 부분은 그래프로 표현하려고 했지만, 저희 프로젝트에 목표와 맞지 않아서, Rest Api로 데이터 호출하여 React에서 화면 비교를 보여주려고 한다.
+##### ★ 해당 부분은 그래프로 표현하려고 했지만, 저희 프로젝트에 목표와 맞지 않아서, Python => ELk => Rest Api로 데이터 호출하여 React에서 대출상품을 비교하는 형태로 변경하였습니다.
 ##### 이 부분이 필요하다면, Front에서 확인하기를 바랍니다. Link[https://github.com/Hooddduck/BKHJ-frontend]
 
 
 ## ✨ AI 예측
 
-#####★ 프로젝트에 최종 목표는 고객이 회원가입 시 많은 rawData를 통해서 고객에 맞는 프로그램이 자동으로 나오게 설정하려고 하였습니다.
-##### 하지만, 고객 Data는 개인정보로 인해서 따로 다운로드가 어려워서, 저희는 dummyData를 생성해서 임의로 어떤 고객들이 어떤 상품을 구매했다고 가상으로 만들었습니다.
+##### ★ 프로젝트에 최종 목표는 고객에게 많은 빅데이터에서 많은 사람들이 선호하는 상품을 자동으로 추천하는 것이였습니다.
+
+##### 하지만, 고객 Data는 개인정보 보호법으로 인해서 다운로드 어려워, 저희는 임의의 DummyData를 생성해서  어떤 고객들이 어떤 상품을 구매했다고 가정하여, 가상으로 Data를 생성하였습니다.
+
+##### ★ 같은 나이, 성별에서 가장 많이 산 상품을 추천해주는 프로그램을 생성했습니다. [AI 예측] 단, 더 많은 컬럼을 사용하려고 했지만, 데이터 수집에 어려움이 있었습니다. [preditmodel.xls] , [회원가입과 동시에 예측 가능] 
+
+##### ★ 대출한도, 대출기간을 통해서 금리를 예측하는 AI프로그램을 만들었습니다.[LoanProudct.5.xlsx]
+        [대출한도, 대출기간 입력을 통한 예측]
+        
+##### 아래는 RawData입니다.
+[LoanProduct 5.xlsx](https://github.com/sunyoungads/BKHJ-backend/files/11816923/LoanProduct.5.xlsx)
+
+
+[preditmodel.xls](https://github.com/sunyoungads/BKHJ-backend/files/11816919/preditmodel.xls)
+
+
+
+##### 아래는 AI Python 코드 입니다.
+##### 간단한, 설명은 코드안에 설정하였습니다. 
+##### Python을 Flask를 통해서 서버를 만들어 진행하였고, mysql에 직접적으로 들어가서, 회원정보를 가져와서 리액트로 뿌려주는 형태로 만들었습니다.
+
+[AI예측.txt](https://github.com/sunyoungads/BKHJ-backend/files/11817090/AI.txt)
 
 
 
 
+## ✔ 대출 상품 예측 시각화 화면
+
+###### 단, 이 전에 React 화면이 다른 부분은 [UI]을 따로 예쁘게 수정하였습니다.
 
 
 
 
+https://github.com/sunyoungads/BKHJ-backend/assets/117277093/fe18b477-9a17-4f4d-b8be-e376a1d811b8
 
 
 
 
+## ERD,화면
+
+
+![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/98aeaa55-833a-4a63-9af9-4e513910fe72)
 
 
 
+
+# 지금까지 저의 글을 읽어주셔서 정말 감사합니다 🙋‍♀️ 
 
 
 
