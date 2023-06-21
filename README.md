@@ -87,8 +87,8 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-
 
 # ✳️ 기능 설명
 
-
-### Spring Security
+### 회원
+#### Spring Security
 
 ###### ●  WebSecurityConfigurerAdapter**는 보안 구현의 핵심입니다. HttpSecurity 구성을 제공하여 cors, csrf, 세션 관리, 보호된 리소스에 대한 규칙을 구성할 수 있습니다. 또한 기본 구성을 확장하고 사용자 정의할 수도 있습니다.
 
@@ -111,6 +111,60 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-
 ###### ● AuthController는 회원 가입/로그인 요청을 처리합니다.
 
 ###### ● TestController에는 역할 기반 검증이 있는 보호된 리소스에 액세스하는 메서드가 있습니다.
+
+★ 코드는 Git에서 확인 및 참고 부탁드립니다.
+
+
+## Security: 여기에서 Spring Security를 구성하고 보안 객체를 구현합니다.
+
+###### ● WebSecurityConfig은 SecurityFilterChain filterChain 를 확장합니다.[주의 WebSecurityConfigurerAdapter(deprecated)] 
+###### ● UserDetailsServiceImpl은 UserDetailsService를 구현합니다.
+###### ● UserDetailsImpl은 UserDetails를 구현합니다.
+###### ● AuthEntryPointJwt는 AuthenticationEntryPoint를 구현합니다.
+###### ● AuthTokenFilter는 OncePerRequestFilter를 확장합니다.
+###### ● JwtUtils는 JWT 생성, 구문 분석, 유효성 검사를 위한 메서드를 제공합니다.
+###### ● 컨트롤러는 회원 가입/로그인 요청 및 인증된 요청을 처리합니다.
+###### ●  @RequestMapping("/api/auth") 
+###### ● AuthController: @PostMapping('/signin'), @PostMapping('/signup')
+###### ● TestController: @GetMapping('/api/test/all'), @GetMapping('/api/test/[role]')
+ 리포지토리에는 데이터베이스와 상호 작용하기 위해 Spring Data JPA JpaRepository를 확장하는 인터페이스가 있습니다.
+
+● UserRepository: JpaRepository를 확장합니다.
+● RoleRepository: JpaRepository를 확장합니다.
+모델은 인증(User) 및 권한(Role)을 위한 두 가지 주요 모델을 정의합니다. 이들은 다대다 관계를 가지고 있습니다.
+
+● User: id, username, email, password, roles
+● Role: id, name
+
+● 페이로드는 요청 및 응답 객체를 위한 클래스를 정의합니다.
+
+● 또한, Spring Datasource, Spring Data JPA 및 앱 속성 (예: JWT 비밀 문자열 또는 토큰 만료 시간)을 구성하기 위해 application.properties 파일을 사용합니다.
+
+
+![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/d47b1764-deda-4e8f-9132-d244c656aa68)
+
+###### ● datasource.url = DB Tool로 연결 (mysql)
+###### ● hibernate.ddl -auto = update [sts 실행 시, 자동으로 DB로 데이터를 넘기는 역할]
+###### ● jwtSecret, jwtExpirationMs = 각 토큰 값 설정 [중요]
+###### ● file-size = 각 파일 크기 지정
+
+
+## 지금까지 각 회원 관련 Token 및 Security관련 설명이 있었습니다 😄
+
+###### 각 회원, 게시판, 댓글 관련 추가,수정,삭제 부분은 빠르게 지나갈 예정입니다.
+
+
+## OverView
+
+  Methods |  Urls |  Actions
+   ----- | --- | ---
+POST	| /api/auth/signin	| 로그인 
+
+POST	| /api/auth/sign up	| 회원가입
+
+Delete	| /api/auth/delete/{id}	| 회원탈퇴
+
+PUT| 	/api/auth/update/{id}	| 회원수정
 
 
 
