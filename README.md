@@ -166,7 +166,13 @@ Delete	| /api/auth/delete/{id}	| 회원탈퇴
 PUT| 	/api/auth/update/{id}	| 회원수정
 
 
-### 회원관련 CRUD 화면 설명은 넘어가도록 하겠습니다.[코드로 봐도 다들 아시죠?!] 🤩
+##### 회원관련 CRUD 화면 설명은 넘어가도록 하겠습니다.[코드로 봐도 다들 아시죠?!] 🤩
+
+##### [추가사항] 저희 프로그램 사용을 원하시는 분이 있으시면 회원이 완성되면 아래 코드를 DB에 넣어주세요
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
 
 #####  그래도, 간략하게 작성 순서만 말씀드리도록 하겠습니다.
 
@@ -331,6 +337,7 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/29ffe622-22e0-4caa-
         [대출한도, 대출기간 입력을 통한 예측]
         
 ##### 아래는 RawData입니다.
+
 [LoanProduct 5.xlsx](https://github.com/sunyoungads/BKHJ-backend/files/11816923/LoanProduct.5.xlsx)
 
 
@@ -359,15 +366,24 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/fe18b477-9a17-4f4d-
 
 
 
-## ERD,화면
+## ERD 화면
 
 
 ![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/98aeaa55-833a-4a63-9af9-4e513910fe72)
 
 
 
+&nbsp;
 
-# 지금까지 저의 글을 읽어주셔서 정말 감사합니다 🙋‍♀️ 
+
+## 결론
+
+##### 팀원들과 함께 Spring Boot, React, Python, 그리고 ELK(엘라스틱서치, 로그스태시, 키바나)를 사용하면서 다양한 경험을 쌓았습니다. 이를 통해 서버 공유에 대해 얼마나 열심히 공부해야하는지 깨달았고, 데이터 분석과 정제의 중요성을 인지했습니다. 특히, 데이터를 분석하고 정제하는 과정에서 DB에 대한 공부 필요성을 더욱 느끼게 되었습니다.
+
+##### 이러한 경험을 통해 어떤 부분에 대해 궁금한 점이 있으신가요? 제가 도움을 드릴 수 있는 내용을 더 자세히 알려주시면 정확한 답변을 드릴 수 있습니다.
+
+
+##### 지금까지 저의 글을 읽어주셔서 정말 감사합니다 🙋‍♀️ 
 
 
 
