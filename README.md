@@ -31,7 +31,7 @@
 
 ##### ● 구현 기능 
 
-##### ● 구현 설명
+##### ● 구현 설명 및 화면
 
 ##### ● 트러블슈팅
 
@@ -149,11 +149,6 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-
 ###### ● file-size = 각 파일 크기 지정
 
 
-## 지금까지 각 회원 관련 Token 및 Security관련 설명이 있었습니다 😄
-
-###### 각 회원, 게시판, 댓글 관련 추가,수정,삭제 부분은 빠르게 지나갈 예정입니다.
-
-
 ## OverView
 
   Methods |  Urls |  Actions
@@ -165,6 +160,17 @@ POST	| /api/auth/sign up	| 회원가입
 Delete	| /api/auth/delete/{id}	| 회원탈퇴
 
 PUT| 	/api/auth/update/{id}	| 회원수정
+
+
+### 회원관련 CRUD 화면 설명은 넘어가도록 하겠습니다.[코드로 봐도 다들 아시죠?!] 🤩
+
+#####  그래도, 간략하게 작성 순서만 말씀드리도록 하겠습니다.
+
+models(.java) =>  Repository(인터페이스 생성) => Service 및 ServiceImpl-> Controller 
+
+
+## 지금까지 각 회원 관련 설명이 있었습니다 😄 많이 부족한 설명 들어주셔서 감사합니다.
+
 
 
 
