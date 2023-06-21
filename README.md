@@ -87,7 +87,7 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-
 
 # ✳️ 기능 설명
 
-### 회원
+## ✔ 회원
 #### Spring Security
 
 ###### ●  WebSecurityConfigurerAdapter**는 보안 구현의 핵심입니다. HttpSecurity 구성을 제공하여 cors, csrf, 세션 관리, 보호된 리소스에 대한 규칙을 구성할 수 있습니다. 또한 기본 구성을 확장하고 사용자 정의할 수도 있습니다.
@@ -115,7 +115,7 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-
 ★ 코드는 Git에서 확인 및 참고 부탁드립니다.
 
 
-## Security: 여기에서 Spring Security를 구성하고 보안 객체를 구현합니다.
+#### Security: 여기에서 Spring Security를 구성하고 보안 객체를 구현합니다.
 
 ###### ● WebSecurityConfig은 SecurityFilterChain filterChain 를 확장합니다.[주의 WebSecurityConfigurerAdapter(deprecated)] 
 ###### ● UserDetailsServiceImpl은 UserDetailsService를 구현합니다.
@@ -168,8 +168,92 @@ PUT| 	/api/auth/update/{id}	| 회원수정
 
 models(.java) =>  Repository(인터페이스 생성) => Service 및 ServiceImpl-> Controller 
 
+## 구현 화면
 
-## 지금까지 각 회원 관련 설명이 있었습니다 😄 많이 부족한 설명 들어주셔서 감사합니다.
+https://github.com/sunyoungads/BKHJ-backend/assets/117277093/29dad353-26da-4190-925a-2ab73163ad02
+
+
+##### 지금까지 각 회원 관련 설명이 있었습니다 😄 많이 부족한 설명 들어주셔서 감사합니다.
+##### 다음으로는 게시판 관련 설명이 있습니다.
+
+## ✔ 게시판 기능
+
+#### 게시판도 동일하게 아래에 순서로 작성해주시면 문제 없습니다!!
+
+models(.java) =>  Repository(인터페이스 생성) => Service 및 ServiceImpl-> Controller 
+
+CRUD 기능만 설정되어 있기에, 따로 설명은 하지 않도록 하겠습니다!
+
+
+
+## 게시판 구현 화면
+
+
+https://github.com/sunyoungads/BKHJ-backend/assets/117277093/e7e03773-bd9a-4b01-b1a7-bc57fd081fb6
+
+
+
+## OverView
+
+  Methods |  Urls |  Actions
+   ----- | --- | ---
+POST	| /api/auth/saveBoard	| 게시판 작성 
+
+POST	| /api/auth/listBoard	| 전체 게시판 
+
+GET	| /api/auth/{id}	| 각 게시판 불러오기
+
+GET| 	/api/auth/deleteBoard/{id}	| 게시판 삭제
+
+Post| 	/api/auth/editBoard/{id}	| 게시판 수정
+
+
+
+## ✔ 댓글 기능
+
+
+##### 댓글 기능은 중요한 포인트가 존재합니다.
+
+① comment.java[model] 에 게시판에 PK를 가져와야 합니다. 
+![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/a6c69768-94b2-4ddf-ac85-533df05016ed)
+
+② 마찬가지로 각각, Controller , Repository ,Serivce에도 해당 board ID를 추가하셔야 합니다.
+
+###### 해당 부분만 조심하시면 댓글을 구현하기에 어려움이 없을 것 같습니다.
+③④⑤⑥⑦⑧⑨
+
+
+
+
+## ✔ 첨부 파일 기능
+
+#### 첨푸 파일 기능에도 중요한 포인트가 있습니다.
+
+
+① 댓글과 마찬가지로 Board_id[Pk] 값을 속성으로 가져와야 합니다.
+![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/73f8b951-9f63-46cd-8f78-26bda2685ac5)
+
+② 댓글 구성과 다른점은, 게시판 등록 시, 파일과 게시판이 같이 저장되게 설정을 해야됩니다. [중요]
+
+③ 파일 부분에 대해서 예외처리가 꼭 필요합니다.
+![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/7c940b8c-85bd-4e4d-9b91-e3bdb1ab8375)
+
+④ 간략 설명
+
+
+###### – FileInfo업로드된 파일의 정보를 포함합니다.
+
+###### – FilesStorageService저장소 초기화, 새 파일 저장, 파일 로드, 파일 정보 목록 가져오기, 모든 파일 삭제를 도와줍니다.
+
+###### – Rest API 내보내기에 FilesController사용 FilesStorageService: 파일 게시, 모든 파일 정보 가져오기, 파일 다운로드.
+
+###### – FileUploadExceptionAdvice컨트롤러가 파일 업로드를 처리할 때 예외를 처리합니다.
+
+###### – application.properties 에는 Servlet Multipart에 대한 구성이 포함되어 있습니다.
+
+###### – uploads 는 파일을 저장하기 위한 정적 폴더입니다.
+
+###### – Spring Boot 의존성을 위한 pom.xml.
 
 
 
