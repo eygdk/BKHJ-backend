@@ -25,15 +25,31 @@
 
 # 📚 목차
 
+##### ● 사용 기술
+
 ##### ● 프로젝트 구조
 
-##### ● 구현 기능 및 설명
+##### ● 구현 기능 
+
+##### ● 구현 설명
 
 ##### ● 트러블슈팅
 
 
+#  🕹 사용 기술 
 
-
+### Back-end
+- JAVA (11)
+- MAVEN 
+- jjwt (0.9.1)
+- JPA
+- React
+- sts [3]
+- Pycharm ( Community Edition 2023.1.2 )
+- Python  (3.11.3)
+- Flask
+- ELK
+- mysql
 
 #  ✴️ 프로젝트 구조
 
@@ -43,6 +59,58 @@
 https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-8596-1b76be51ac7d
 
 
+
+
+###### 구현 순서는 회원 기능 구현 => 게시판 기능 구현 => 댓글 기능 구현 => 파일 첨부 기능 구현 으로 진행하였습니다.
+
+
+
+
+
+# 💲 구현 기능
+
+● 게시판 기능
+- 게시글 검색 (제목, 내용, 작성자)
+- 게시글 작성,수정,삭제 
+
+● 댓글 기능
+- 댓글 작성,수정,삭제
+    
+● 회원 기능
+- JWT 기능, Security기능, 
+- 회원가입, 회원정보 수정 , 회원탈퇴
+- 로그인/로그아웃
+
+● 파일 첨부 기능
+- 파일 추가,수정,삭제
+
+
+# ✳️ 기능 설명
+
+
+### Spring Security
+
+###### ●  WebSecurityConfigurerAdapter**는 보안 구현의 핵심입니다. HttpSecurity 구성을 제공하여 cors, csrf, 세션 관리, 보호된 리소스에 대한 규칙을 구성할 수 있습니다. 또한 기본 구성을 확장하고 사용자 정의할 수도 있습니다.
+
+###### ● UserDetailsService 인터페이스에는 사용자 이름으로 사용자를 로드하고 Spring Security가 인증과 유효성 검사에 사용할 수 있는 UserDetails 개체를 반환하는 메서드가 있습니다.
+
+###### ● UserDetails에는 인증 개체를 구축하는 데 필요한 정보 (사용자 이름, 비밀번호, 권한 등)가 포함되어 있습니다.
+
+###### ● UsernamePasswordAuthenticationToken은 로그인 요청에서 {사용자 이름, 비밀번호}를 가져옵니다. AuthenticationManager는 이를 사용하여 로그인 계정을 인증합니다.
+
+###### ● AuthenticationManager에는 DaoAuthenticationProvider (UserDetailsService 및 PasswordEncoder의 도움을 받아)가 있어 UsernamePasswordAuthenticationToken 개체를 유효성 검사합니다. 성공하면 AuthenticationManager는 권한이 부여된 권한을 포함한 완전히 채워진 인증 개체를 반환합니다.
+
+###### ● OncePerRequestFilter는 API에 대한 각 요청에 대해 단일 실행을 수행합니다. 우리는 JWT를 구문 분석하고 유효성을 검사하며 (UserDetailsService를 사용하여) 사용자 세부 정보를 로드하고 (UsernamePasswordAuthenticationToken을 사용하여) 권한을 확인하는 doFilterInternal() 메서드를 제공합니다.
+
+###### ● AuthenticationEntryPoint는 클라이언트가 인증 없이 보호된 리소스에 액세스하는 경우 권한 없음 오류를 감지하고 401을 반환합니다.
+
+###### ● Repository에는 Database와 작업하기 위한 UserRepository 및 RoleRepository가 있으며, Controller에 가져올 것입니다.
+
+###### ● Controller는 OncePerRequestFilter에 의해 필터링된 요청을 받고 처리합니다.
+
+###### ● AuthController는 회원 가입/로그인 요청을 처리합니다.
+
+###### ● TestController에는 역할 기반 검증이 있는 보호된 리소스에 액세스하는 메서드가 있습니다.
 
 
 
