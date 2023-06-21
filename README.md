@@ -33,7 +33,11 @@
 
 ##### ● 구현 설명 및 화면
 
-##### ● 트러블슈팅
+##### ● Python 기반의 데이터 분석
+
+##### ● Python 기반의 데이터 예측
+
+##### ● ERD 모델
 
 
 #  🕹 사용 기술 
@@ -127,18 +131,18 @@ https://github.com/sunyoungads/BKHJ-backend/assets/117277093/95476f79-559b-4f3a-
 ###### ●  @RequestMapping("/api/auth") 
 ###### ● AuthController: @PostMapping('/signin'), @PostMapping('/signup')
 ###### ● TestController: @GetMapping('/api/test/all'), @GetMapping('/api/test/[role]')
- 리포지토리에는 데이터베이스와 상호 작용하기 위해 Spring Data JPA JpaRepository를 확장하는 인터페이스가 있습니다.
+###### ● 리포지토리에는 데이터베이스와 상호 작용하기 위해 Spring Data JPA JpaRepository를 확장하는 인터페이스가 있습니다.
 
-● UserRepository: JpaRepository를 확장합니다.
-● RoleRepository: JpaRepository를 확장합니다.
-모델은 인증(User) 및 권한(Role)을 위한 두 가지 주요 모델을 정의합니다. 이들은 다대다 관계를 가지고 있습니다.
+###### ● UserRepository: JpaRepository를 확장합니다.
+###### ● RoleRepository: JpaRepository를 확장합니다.
+###### 모델은 인증(User) 및 권한(Role)을 위한 두 가지 주요 모델을 정의합니다. 이들은 다대다 관계를 가지고 있습니다.
 
-● User: id, username, email, password, roles
-● Role: id, name
+###### ● User: id, username, email, password, roles
+###### ● Role: id, name
 
-● 페이로드는 요청 및 응답 객체를 위한 클래스를 정의합니다.
+###### ● 페이로드는 요청 및 응답 객체를 위한 클래스를 정의합니다.
 
-● 또한, Spring Datasource, Spring Data JPA 및 앱 속성 (예: JWT 비밀 문자열 또는 토큰 만료 시간)을 구성하기 위해 application.properties 파일을 사용합니다.
+###### ● 또한, Spring Datasource, Spring Data JPA 및 앱 속성 (예: JWT 비밀 문자열 또는 토큰 만료 시간)을 구성하기 위해 application.properties 파일을 사용합니다.
 
 
 ![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/d47b1764-deda-4e8f-9132-d244c656aa68)
@@ -220,7 +224,6 @@ Post| 	/api/auth/editBoard/{id}	| 게시판 수정
 ② 마찬가지로 각각, Controller , Repository ,Serivce에도 해당 board ID를 추가하셔야 합니다.
 
 ###### 해당 부분만 조심하시면 댓글을 구현하기에 어려움이 없을 것 같습니다.
-③④⑤⑥⑦⑧⑨
 
 
 
@@ -233,7 +236,7 @@ Post| 	/api/auth/editBoard/{id}	| 게시판 수정
 ① 댓글과 마찬가지로 Board_id[Pk] 값을 속성으로 가져와야 합니다.
 ![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/73f8b951-9f63-46cd-8f78-26bda2685ac5)
 
-② 댓글 구성과 다른점은, 게시판 등록 시, 파일과 게시판이 같이 저장되게 설정을 해야됩니다. [중요]
+② 댓글 구성과 다른점은, 게시판 등록 시 파일과 게시판이 같이 저장되는 것을 염두해두어야합니다. [중요]
 
 ③ 파일 부분에 대해서 예외처리가 꼭 필요합니다.
 ![image](https://github.com/sunyoungads/BKHJ-backend/assets/117277093/7c940b8c-85bd-4e4d-9b91-e3bdb1ab8375)
@@ -254,6 +257,99 @@ Post| 	/api/auth/editBoard/{id}	| 게시판 수정
 ###### – uploads 는 파일을 저장하기 위한 정적 폴더입니다.
 
 ###### – Spring Boot 의존성을 위한 pom.xml.
+
+
+## OverView
+
+  Methods |  Urls |  Actions
+   ----- | --- | ---
+POST	| /api/comments	| 댓글 작성 
+
+POST	| /board/{boardId}	| 댓글에 게시판 id 연결 
+
+Put	| /{commentId}	| 각 댓글 불러오기
+
+Delete|  /{commentId}}	| 댓글 삭제
+
+Post| 	/api/auth/upload	| 파일 첨부
+
+GET| 	/api/auth/files	| 전체 파일 보기 
+
+GET| 	/api/auth//files/{id}	| 각 파일 아이디 추출
+
+GET| 	/api/auth//files/board/{boardId}	| 첨푸파일에 게시판 아이디 생성
+
+
+
+## 댓글 및 파일 첨부 화면
+
+
+
+https://github.com/sunyoungads/BKHJ-backend/assets/117277093/29ffe622-22e0-4caa-bcc8-25af952623dd
+
+
+
+## 🌟 여기까지가, 스프링으로에 구현 입니다. 나머지는 Front에서의 리액트를 확인해주시면 됩니다. Link[https://github.com/Hooddduck/BKHJ-frontend]
+### 다음으로는, Python 관련해서 설명 드리도록 하겠습니다.
+
+
+## ✔ Data 수집 
+
+##### 일단 저희가 목표로 한 부분은 대출상품을 가져와서 비교하려는 부분입니다.   
+
+##### 그래서 해당 데이터는 공공데이터포탈사이트: [https://www.data.go.kr/data/15074500/openapi.do] 에서 다운받았습니다.
+
+## ✔ Data 정제 및 분석 [Python]
+
+##### ★ Tool은 Pycharm
+
+##### ★ Json형태로 파싱
+
+##### ★ 사용 가능한 column 파싱 [ 공공 data 에서 원하는 부분만 뽑아낸다 ]
+
+##### ★ CSV파일로 다운로드 변환 시키기[ ELk에 파일 자체를 등록하기 위해서 필요하다]
+
+### 코드 확인 [Python]
+[분석code.txt](https://github.com/sunyoungads/BKHJ-backend/files/11816779/code.txt)
+
+
+## ✔ Data 시각화
+
+##### ★ 해당 부분은 그래프로 표현하려고 했지만, 저희 프로젝트에 목표와 맞지 않아서, Rest Api로 데이터 호출하여 React에서 화면 비교를 보여주려고 한다.
+##### 이 부분이 필요하다면, Front에서 확인하기를 바랍니다. Link[https://github.com/Hooddduck/BKHJ-frontend]
+
+
+## ✨ AI 예측
+
+#####★ 프로젝트에 최종 목표는 고객이 회원가입 시 많은 rawData를 통해서 고객에 맞는 프로그램이 자동으로 나오게 설정하려고 하였습니다.
+##### 하지만, 고객 Data는 개인정보로 인해서 따로 다운로드가 어려워서, 저희는 dummyData를 생성해서 임의로 어떤 고객들이 어떤 상품을 구매했다고 가상으로 만들었습니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
